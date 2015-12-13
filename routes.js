@@ -17,24 +17,27 @@ module.exports = function(router)
   });
 
   router.route('/jobs')
-    .post(function (req, res) {
-      //later
-      jobs.createOne(req, res);
-    })
-    .get(function (req, res) {
-       jobs.findAll(req, res);
-    });
+  .post(function (req, res) {
+    //later
+    jobs.createOne(req, res);
+  })
+  .get(function (req, res) {
+     jobs.findAll(req, res);
+  });
 
-    router.route('/jobs/:job_id')
-    .get(function(req, res) {
+  router.route('/jobs/:job_id')
+  .get(function(req, res) {
+      if(req.params.job_id == "latest")
+        jobs.findAll(req, res, 10);
+      else
         jobs.findById(req, res);
-    })
-    .put(function(req, res) {
-        jobs.updateOne(req, res);
-    })
-    .delete(function(req, res) {
-        jobs.deleteOne(req, res);
-    });
+  })
+  .put(function(req, res) {
+      jobs.updateOne(req, res);
+  })
+  .delete(function(req, res) {
+      jobs.deleteOne(req, res);
+  });
 
 
 

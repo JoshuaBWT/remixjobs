@@ -35,14 +35,16 @@ Etc, etc, etc...
 
 We could define a job by its
 
-1. Job title
-1. Company
-1. Localization
-1. Category
-1. Description
-1. Contract
-1. Date
-1. Tags
+* jobId: Number
+* url: String
+* title: String
+* company: String
+* localization: String
+* category: String
+* description: String
+* contract: String
+* date: Date
+* tags: [String]
 
 ### /jobs
 
@@ -54,8 +56,6 @@ We could define a job by its
 #### Non exhaustive parameters
 
 parameters | description
----------- | -----------
-q | the query
 contract | filter by contract (cdi, cdd...)
 category | design, dev...
 where | localization
