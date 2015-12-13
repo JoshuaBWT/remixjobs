@@ -42,6 +42,8 @@ module.exports = function(router)
     router.route('/updateBase')
       .get(function(req, res)
       {
-          scraper.fetchAllJobs(req, res);
+          scraper.fetchAllJobs(req, res, function(allJobs) {
+            res.send({message : 'All ' + allJobs.length + ' Jobs created successfully'});
+          });
       });
 }
