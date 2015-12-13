@@ -18,7 +18,7 @@ mongoose.createConnection('mongodb://localhost:27017/remixjobs');
 require("./routes")(router);
 
 //allumage du serveur
-var server = app.listen(3000, function () {
+var server = app.listen(3000, '0.0.0.0', function () {
   var port = server.address().port;
 
   console.log('RemixJobs api listening at http://localhost:%s', port);

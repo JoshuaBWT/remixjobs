@@ -25,6 +25,17 @@ module.exports = function(router)
        jobs.findAll(req, res);
     });
 
+    router.route('/jobs/:job_id')
+    .get(function(req, res) {
+        jobs.findById(req, res);
+    })
+    .put(function(req, res) {
+        jobs.updateOne(req, res);
+    })
+    .delete(function(req, res) {
+        jobs.deleteOne(req, res);
+    });
+
 
 
     //Fill the mongodb with some good scraping
