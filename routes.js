@@ -7,8 +7,6 @@ var scraper = require('./lib/scrap/remixScrap.js');
 module.exports = function(router)
 {
   router.use(function(req, res, next) {
-    // do logging
-    //console.log('Something is happening.');
     next(); // make sure we go to the next routes and don't stop here
   });
 
@@ -23,6 +21,7 @@ module.exports = function(router)
 
   router.route('/jobs/:job_id')
   .get(function(req, res) {
+      //si /jobs/latest
       if(req.params.job_id == "latest")
         jobs.findAll(req, res, 10);
       else
@@ -33,6 +32,9 @@ module.exports = function(router)
 
   router.route('/companies')
   .get(function(req, res) { companies.findAll(req, res); });
+
+  router.route('/companies/:company_name')
+  .get(function(req, res) { companies.findAllJobs(req, res); });
 
 
     //Fill the mongodb with some good scraping

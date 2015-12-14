@@ -12,17 +12,15 @@ Today, no (un)official API was developed to allow developers to add jobs in thei
 
 *Build a remixjobs RESTful API*
 
-## How to do that?
+## How to install the API
 
-Transcript the API description in code ;)
-
-The goal is write enough endpoints with the right filters and fields to build a specific job boards as:
-
-* A job board for JavaScript intership
-* A job board for remote jobs on Big Data
-* A job board for Designers who want sunny weather... so in South Of France
-
-Etc, etc, etc...
+* Run prompt command into the app /root folder
+* Run npm i to install npm dependencies
+* If you haven't installed MongoDB you'll need to set it up (https://docs.mongodb.org/v3.0/tutorial/install-mongodb-on-windows/)
+* (If MongoDB installed run mongod)
+* Run node server.js
+* You will need to fill you mongodb database to do so run into you browser localhost:3000/updateBase
+* API running :)
 
 ## Stack
 
@@ -30,10 +28,12 @@ Etc, etc, etc...
 * Express 4
 * MongoDB
 * Postman
+* cheerio
+* mongoose
 
 ## Api description
 
-We could define a job by its
+We define a job by its
 
 * jobId: Number
 * url: String
@@ -46,20 +46,51 @@ We could define a job by its
 * date: Date
 * tags: [String]
 
+We define a company by its
+
+* company (name): String
+* count (number of job offers) : Number
+
 ### /jobs
 
 * Return all jobs
 * Create a new job
 * Return information of a job
 * Update a jobs
+* example
+```
+[
+  {
+    "_id": "566ecc6feda129701f8755ac",
+    "jobId": 28244,
+    "title": "Développeur front-end H/F",
+    "contract": "CDI",
+    "company": "Coursavenue",
+    "localization": "Paris",
+    "date": "2015-01-18T23:00:00.000Z",
+    "url": "https://remixjobs.com/emploi/Developpement/Developpeur-front-end-H-F/28244",
+    "category": "Developpement",
+    "description": "",
+    "__v": 0,
+    "tags": [
+      "javascript",
+      "ruby",
+      "design",
+      "responsive"
+    ]
+  }
+]
+```
 
-#### Non exhaustive parameters
+#### Parameters
 
 parameters | description
 contract | filter by contract (cdi, cdd...)
 category | design, dev...
 where | localization
 limit | Jobs number
+company | company name
+sortDesc |
 
 ### /jobs/latest
 
@@ -67,26 +98,35 @@ limit | Jobs number
 
 ### /companies
 
-* Return all companies
-* Return all jobs of a the given companies
+* Return all companies with for each a list of jobId associated with the company
+* example :
+```
+[
+  {
+    "count": 28,
+    "jobs": [
+      {
+        "id": "566ecc6feda129701f8755cc",
+        "title": "Développeur JS/Phonegap sénior | Editeur mobile H/F"
+      },
+      {
+        "id": "566ecc6feda129701f8755cf",
+        "title": "Développeur Android « sport addict » H/F"
+      }
+  ],
+  "company": "Deezer"
+ }
+]
+```
+
+### /companies/:company_name/jobs
+
+* Return all jobs for the given company_name
 
 ## Jobs model
 
 I think that the first step is to scrap datas from RemixJobs website and fill a [mongoDB](https://www.mongodb.org/) database.
-
 Once database filled, your api will fetch/save/update data from this database in a real API consuming.
-
-
-## API rules (at least to follow)
-
-1. RESTful URLs and actions
-1. Plural noun
-1. Version via the url
-1. Query parameters for advanced filtering, sorting and searching
-1. Limit fields are returned from the APO
-1. JSON only
-1. snake_case for resources
-1. Use HTTP Status codes
 
 ## Licence
 

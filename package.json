@@ -4,7 +4,6 @@
   "description": "remix jobs api",
   "main": "index.js",
   "dependencies": {
-    "async": "^1.5.0",
     "body-parser": "^1.14.1",
     "cheerio": "^0.19.0",
     "express": "^4.13.3",
@@ -14,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node server -> localhost:3000/jobs/latest"
   },
   "repository": {
     "type": "git",
@@ -23,7 +22,8 @@
   "keywords": [
     "remixjobs",
     "rest",
-    "api"
+    "api",
+    "MongoDB"
   ],
   "author": "JoshuaBWT",
   "license": "GNU",
