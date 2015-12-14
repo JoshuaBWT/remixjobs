@@ -125,11 +125,6 @@ sortAsc | field to sort ascendingly
 
 * Return all jobs for the given company_name
 
-## Jobs model
-
-I think that the first step is to scrap datas from RemixJobs website and fill a [mongoDB](https://www.mongodb.org/) database.
-Once database filled, your api will fetch/save/update data from this database in a real API consuming.
-
 ## Licence
 
 [Uncopyrighted](http://zenhabits.net/uncopyright/)
