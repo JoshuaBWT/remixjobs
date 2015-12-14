@@ -85,12 +85,14 @@ We define a company by its
 #### Parameters
 
 parameters | description
-contract | filter by contract (cdi, cdd...)
+---------- | -----------
+contract | filter by contract (cdi, cdd...)
 category | design, dev...
-where | localization
-limit | Jobs number
+where | localization
+limit | Jobs number
 company | company name
-sortDesc |
+sortDesc | field to sort descendingly
+sortAsc | field to sort ascendingly
 
 ### /jobs/latest
 
