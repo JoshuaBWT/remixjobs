@@ -18,8 +18,8 @@ Today, no (un)official API was developed to allow developers to add jobs in thei
 * Run npm i to install npm dependencies
 * If you haven't installed MongoDB you'll need to set it up (https://docs.mongodb.org/v3.0/tutorial/install-mongodb-on-windows/)
 * (If MongoDB installed run mongod)
-* Run node server.js
-* You will need to fill you mongodb database to do so run into you browser localhost:3000/updateBase
+* Run ```sh node server.js```
+* You will need to fill you mongodb database to do so run into you browser ```url localhost:3000/updateBase```
 * API running :)
 
 ## Stack
@@ -57,7 +57,7 @@ We define a company by its
 * Create a new job
 * Return information of a job
 * Update a jobs
-* example
+* example : ```url localhost:3000/jobs/566ecc6feda129701f8755ac ```
 ```
 [
   {
@@ -82,6 +82,41 @@ We define a company by its
 ]
 ```
 
+### /jobs?filters
+
+* Particular case for filters returning a waterfall object depending on the filters order (not working with date right now, or with single tags)
+* example :```url localhost:3000/jobs?filters=contract,category,company```
+```
+{
+  "CDI": {
+    "Seo": {
+      "Dolead": [
+        {
+          "_id": "5670148bda1c3320262bdd63",
+          "jobId": 32770,
+          "title": "Senior Account Manager SEA/SEM - Team Lead  H/F",
+          "contract": "CDI",
+          "company": "Dolead",
+          "localization": "Paris",
+          "date": "2015-10-15T22:00:00.000Z",
+          "url": "https://remixjobs.com/emploi/Seo/Senior-Account-Manager-SEA-SEM-Team-Lead-H-F/32770",
+          "category": "Seo",
+          "description": "",
+          "__v": 0,
+          "tags": [
+            "adwords",
+            "analytics",
+            "sea",
+            "Gestioncomptes",
+            "Accountmanagement"
+          ]
+        }
+      ]
+    }
+  }
+}  
+```
+
 #### Parameters
 
 parameters | description
@@ -91,8 +126,10 @@ category | design, dev...
 where | localization
 limit | Jobs number
 company | company name
+tags | tags comma separated
 sortDesc | field to sort descendingly
 sortAsc | field to sort ascendingly
+filters | filters comma separated (Warning returning waterfall object)
 
 ### /jobs/latest
 
@@ -101,7 +138,7 @@ sortAsc | field to sort ascendingly
 ### /companies
 
 * Return all companies with for each a list of jobId associated with the company
-* example :
+* example : ```url localhost:3000/jobs/566ecc6feda129701f8755ac ```
 ```
 [
   {

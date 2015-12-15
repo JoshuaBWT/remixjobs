@@ -11,7 +11,12 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-
+/**
+ * Try to connect to the mongodb database
+ * @param  {[String]} mongoDb connection string
+ * @param  {[func]} callback
+ * @return {[type]}  null
+ */
 mongoose.connect('mongodb://localhost:27017/remixjobs/', function(err) {
   if (err)
   {
@@ -24,7 +29,9 @@ mongoose.connect('mongodb://localhost:27017/remixjobs/', function(err) {
 var router = express.Router();
 app.use("/", router);
 
-//gestion des formulaires dans le module routes
+/**
+ * definition of the app routes
+ */
 require("./routes")(router);
 
 //allumage du serveur
